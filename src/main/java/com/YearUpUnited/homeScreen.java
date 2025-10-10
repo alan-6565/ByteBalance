@@ -15,6 +15,7 @@ public class homeScreen {
             System.out.println("P) Make a Payment");
             System.out.println("L) Ledger");
             System.out.println("X) Exit");
+            System.out.println("Input: ");
             String input = sc.nextLine().toUpperCase().trim();
 
             switch (input) {
@@ -30,6 +31,8 @@ public class homeScreen {
                     break;
                 case "X":
                     System.out.println("Goodbye");
+                    running = false;
+                    break;
             }
         }
     }
