@@ -1,5 +1,10 @@
 package com.YearUpUnited;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class homeScreen {
@@ -19,9 +24,8 @@ public class homeScreen {
             String input = sc.nextLine().toUpperCase().trim();
 
             switch (input) {
-
                 case "D":
-                    System.out.println("You have deposited xyz");
+                    addDeposit();
                     break;
                 case "P":
                     System.out.println("Payment Completed");
@@ -34,6 +38,31 @@ public class homeScreen {
                     running = false;
                     break;
             }
+        }
+    }
+
+    private static void addDeposit() {
+        try {
+            Scanner sc = new Scanner(System.in);
+            LocalDate date = LocalDate.now();
+            LocalTime time = LocalTime.now();
+            String formattedTime = time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+            String description = "Deposit";
+            String vendor = "Shikamaru Ledger";
+
+            double amount = sc.nextDouble();
+
+            transactions t = new transactions(date, formattedTime, description, vendor, amount);
+            sc.nextLine();
+            try (FileWriter writer = new FileWriter("transactions.csv", true)) {
+                writer.write(t.toString());
+            }
+
+            System.out.println("Deposit saved");
+
+        } catch (IOException e) {
+            System.out.println("Could not save");
         }
     }
 
