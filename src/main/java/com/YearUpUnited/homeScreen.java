@@ -42,6 +42,7 @@ public class homeScreen {
     }
 
     private static void addDeposit() {
+        System.out.println("Enter deposit amount:");
         try {
             Scanner sc = new Scanner(System.in);
             LocalDate date = LocalDate.now();
@@ -64,6 +65,7 @@ public class homeScreen {
         } catch (IOException e) {
             System.out.println("Could not save");
         }
+
     }
 
 }
