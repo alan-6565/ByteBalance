@@ -47,7 +47,7 @@ public class homeScreen {
             Scanner sc = new Scanner(System.in);
             LocalDate date = LocalDate.now();
             LocalTime time = LocalTime.now();
-            String formattedTime = time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            String formattedTime = time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));//i added the time and format to keep the decimals from appearing
 
             String description = "Deposit";
             String vendor = "Shikamaru Ledger";
