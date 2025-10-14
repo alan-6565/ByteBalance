@@ -33,10 +33,10 @@ public class homeScreen {
                     addDeposit(sc);
                     break;
                 case "P":
-                    System.out.println("Payment Completed");
+                    addPayment(sc);
                     break;
                 case "L":
-                    System.out.println("Taking you to Ledger");
+
                     break;
                 case "X":
                     System.out.println("Goodbye");
@@ -46,6 +46,8 @@ public class homeScreen {
         }
         sc.close();
     }
+
+
 
     private static void addDeposit(Scanner sc) {
 
@@ -83,4 +85,49 @@ public class homeScreen {
 
     }
 
+    private static void addPayment(Scanner sc) {
+        try {
+            System.out.println("Enter the amount you would like to pay: ");
+            double amount = sc.nextDouble();
+            sc.nextLine();
+
+            if (amount <= 0) {
+                System.out.println("Amount must be positive.");
+                return;
+            }
+
+            amount = (amount - amount) - amount;
+
+            System.out.println("Who will this payment be for: ");
+            String vendor = sc.nextLine().trim();
+
+            System.out.println("Description (Optional): ");
+            String description = sc.nextLine().trim();
+
+            if (description.equals("")) {
+                description = "Payment";
+            }
+
+            LocalDate date = LocalDate.now();
+            String time = LocalTime.now().format(TimeFormatted);
+
+            transactions t = new transactions(date, time, description, vendor, amount);
+
+            try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName, true))) {
+                br.write(t.addToCsv());
+                br.newLine();
+            }
+
+            System.out.println("Payment Completed");
+            System.out.println(t);
+
+
+        }catch (NumberFormatException e){
+            System.out.println("That wasn’t a valid number.");
+        }
+        catch (IOException e) {
+            System.out.println("Could not save");
+        }
+
+    }
 }
