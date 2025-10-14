@@ -1,7 +1,6 @@
 package com.YearUpUnited;
 
 import java.time.LocalDate;
-import java.time.LocalTime;//importing the time that i need
 
 public class transactions {// what i will be using to set the transactions and later save into csv
     private LocalDate date;
@@ -17,6 +16,12 @@ public class transactions {// what i will be using to set the transactions and l
         this.vendor = vendor;
         this.amount = amount;
     }
+
+    public String addToCsv() {
+        return String.format("%s|%s|%s|%s|%.2f", date, time, description, vendor, amount);
+    }
+
+
 
     @Override//this will be what will then print out the transaction
     public String toString() {
