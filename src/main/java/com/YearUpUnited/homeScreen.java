@@ -8,9 +8,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import static com.YearUpUnited.ledgerScreen.showLedgerMenu;
+
 public class homeScreen {
 
-    private static final String fileName = "/Users/alansito/Pluralsight/Capstones/Shikamaru_Ledger/transactions.csv";
+    private static final String fileName = "transactions.csv";
     private static final DateTimeFormatter TimeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 
@@ -36,15 +38,16 @@ public class homeScreen {
                     addPayment(sc);
                     break;
                 case "L":
-
+                    ledgerScreen.showLedgerMenu(sc);
                     break;
                 case "X":
                     System.out.println("Goodbye");
                     running = false;
-                    break;
+
             }
         }
         sc.close();
+
     }
 
 
