@@ -71,7 +71,7 @@ public class homeScreen {
             LocalDate date = LocalDate.now();
             String time = LocalTime.now().format(TimeFormatted);
 
-            transactions t = new transactions();
+            transactions t = new transactions(date, time, description, vendor, amount);
             try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName, true))) {
                 br.write(t.addToCsv());
                 br.newLine();

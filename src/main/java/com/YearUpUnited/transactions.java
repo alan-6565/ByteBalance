@@ -1,12 +1,13 @@
 package com.YearUpUnited;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class transactions {// what i will be using to set the transactions and later save into csv
     private LocalDate date;
-    private String time;
+    private LocalTime time;
     private String description;
     private String vendor;
     private double amount;
@@ -15,7 +16,7 @@ public class transactions {// what i will be using to set the transactions and l
         return date;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
@@ -31,7 +32,7 @@ public class transactions {// what i will be using to set the transactions and l
         return amount;
     }
 
-    public transactions(LocalDate date, String time, String description, String vendor, double amount) {
+    public transactions(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
         this.description = description;
