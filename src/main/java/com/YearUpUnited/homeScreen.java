@@ -16,6 +16,7 @@ public class homeScreen {
     private static final DateTimeFormatter TimeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 
+
     public static void showHomeScreen(){
         Scanner sc = new Scanner(System.in);
         boolean running = true;
@@ -70,7 +71,7 @@ public class homeScreen {
             LocalDate date = LocalDate.now();
             String time = LocalTime.now().format(TimeFormatted);
 
-            transactions t = new transactions(date, time, description, vendor, amount);
+            transactions t = new transactions();
             try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName, true))) {
                 br.write(t.addToCsv());
                 br.newLine();

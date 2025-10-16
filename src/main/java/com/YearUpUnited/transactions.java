@@ -1,6 +1,8 @@
 package com.YearUpUnited;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class transactions {// what i will be using to set the transactions and later save into csv
     private LocalDate date;
@@ -8,6 +10,26 @@ public class transactions {// what i will be using to set the transactions and l
     private String description;
     private String vendor;
     private double amount;
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
 
     public transactions(LocalDate date, String time, String description, String vendor, double amount) {
         this.date = date;
@@ -20,8 +42,6 @@ public class transactions {// what i will be using to set the transactions and l
     public String addToCsv() {
         return String.format("%s|%s|%s|%s|%.2f", date, time, description, vendor, amount);
     }
-
-
 
     @Override//this will be what will then print out the transaction
     public String toString() {

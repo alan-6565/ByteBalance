@@ -9,6 +9,7 @@ import java.util.*;
 public class ledgerScreen {
 
     private static final String fileName = "transactions.csv";
+    private static final List<transactions> transaction = new ArrayList<>();
 
     public static void showLedgerMenu(Scanner sc){
         boolean running = true;
