@@ -69,7 +69,8 @@ public class homeScreen {
 
 
             LocalDate date = LocalDate.now();
-            String time = LocalTime.now().format(TimeFormatted);
+            LocalTime time = LocalTime.now();
+                    //.format(TimeFormatted);
 
             transactions t = new transactions(date, time, description, vendor, amount);
             try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName, true))) {
@@ -113,7 +114,8 @@ public class homeScreen {
             }
 
             LocalDate date = LocalDate.now();
-            String time = LocalTime.now().format(TimeFormatted);
+            LocalTime time = LocalTime.now();
+                    //.format(TimeFormatted);
 
             transactions t = new transactions(date, time, description, vendor, amount);
 

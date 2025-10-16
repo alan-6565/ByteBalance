@@ -32,7 +32,7 @@ public class ledgerScreen {
 
             switch (choice) {
                 case "A":
-                    displayAll();
+                    displayAll(transaction);
                     break;
                 case "D":
                     System.out.println("All Deposits");
@@ -81,7 +81,9 @@ public class ledgerScreen {
         return list;
     }
 
-    private static void displayAll() {
-
+    private static void displayAll(List<transactions> list) {
+        for(var i = 0; i < list.size(); i++){
+            System.out.println(list.get(i).toString());
+        }
     }
 }
