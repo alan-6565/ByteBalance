@@ -35,7 +35,7 @@ public class ledgerScreen {
                     displayAll(transaction);
                     break;
                 case "D":
-                    System.out.println("All Deposits");
+                    displayAllDeposits(transaction);
                     break;
                 case "P":
                     System.out.println("All Payments");
@@ -86,4 +86,15 @@ public class ledgerScreen {
             System.out.println(list.get(i).toString());
         }
     }
+
+    private static void displayAllDeposits(List<transactions> list) {
+        for(var i = 0; i < list.size(); i++){
+            if (list.get(i).getAmount() >= 0){
+                System.out.println(list.get(i).toString());
+            }
+
+        }
+    }
+
+
 }
