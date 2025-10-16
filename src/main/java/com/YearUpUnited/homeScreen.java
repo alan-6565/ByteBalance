@@ -22,7 +22,7 @@ public class homeScreen {
         boolean running = true;
 
         while(running) {
-            System.out.println("//Welcome Fellow Ledger//");
+            System.out.println("Welcome  Ledger");
             System.out.println("To get started pick an option from the following:");
             System.out.println("D) Add a Deposit");
             System.out.println("P) Make a Payment");
