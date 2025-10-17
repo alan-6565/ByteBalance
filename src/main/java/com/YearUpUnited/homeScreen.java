@@ -71,8 +71,11 @@ public class homeScreen {
                 System.out.println("Amount must be positive.");
                 return;
             }
-            String description = "Deposit";
-            String vendor = "Shikamaru Ledger";
+            System.out.println("Enter Deposit Description: ");
+            String description = sc.nextLine();
+
+            System.out.println("Enter Vendor : ");
+            String vendor = sc.nextLine();
 
 
             LocalDate date = LocalDate.now();
