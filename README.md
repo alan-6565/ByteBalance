@@ -1,4 +1,4 @@
-# 🌀 Shikamaru Nara’s Shadow Ledger
+# 🌀 Shikamaru Ledger
 
 ## 📘 Project Overview
 The **Shadow Ledger** is a console-based Java accounting system designed to help users manage their financial transactions — tracking deposits, payments, and generating summary reports — all with a touch of *Naruto’s* tactical flair.  
