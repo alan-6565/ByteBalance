@@ -41,7 +41,7 @@ public class ledgerScreen {
                     displayAllPayments(transaction);
                     break;
                 case "R":
-                    System.out.println("Reports");
+                    Reports.showReportsMenu(sc);
                     break;
                 case "X":
                     System.out.println("Back To Home");
