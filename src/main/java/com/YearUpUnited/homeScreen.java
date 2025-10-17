@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import static com.YearUpUnited.ledgerScreen.showLedgerMenu;
+import static com.YearUpUnited.start.simulateLoading;
 
 public class homeScreen {
 
@@ -22,32 +23,38 @@ public class homeScreen {
         boolean running = true;
 
         while(running) {
-            System.out.println("Welcome  Ledger");
-            System.out.println("To get started pick an option from the following:");
-            System.out.println("D) Add a Deposit");
-            System.out.println("P) Make a Payment");
-            System.out.println("L) Ledger");
-            System.out.println("X) Exit");
-            System.out.println("Input: ");
+            System.out.println("===============================================");
+            System.out.println("   🌀 Shikamaru’s Shadow Ledger 🌀");
+            System.out.println("===============================================");
+            System.out.println("\"What a drag... But let’s get this accounting done.\"");
+            System.out.println("Choose your next move, genius ninja:");
+            System.out.println("D) 💰 Add a Deposit");
+            System.out.println("P) 💸 Make a Payment");
+            System.out.println("L) 📜 Open the Ledger");
+            System.out.println("X) 🍃 Call it a Day (Exit)");
+            System.out.print("Input: ");
             String input = sc.nextLine().trim().toUpperCase();
 
             switch (input) {
                 case "D":
+                    simulateLoading("Entering The Deposit Page");
                     addDeposit(sc);
                     break;
                 case "P":
+                    simulateLoading("Entering The Payment Page");
                     addPayment(sc);
                     break;
                 case "L":
+                    simulateLoading("Opening The Ledger");
                     ledgerScreen.showLedgerMenu(sc);
                     break;
                 case "X":
-                    System.out.println("Goodbye");
+                    System.out.println("Come Back Soon");
                     running = false;
 
             }
         }
-        sc.close();
+
 
     }
 
@@ -69,7 +76,7 @@ public class homeScreen {
 
 
             LocalDate date = LocalDate.now();
-            LocalTime time = LocalTime.now();
+            LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.SECONDS);;
                     //.format(TimeFormatted);
 
             transactions t = new transactions(date, time, description, vendor, amount);
@@ -114,7 +121,7 @@ public class homeScreen {
             }
 
             LocalDate date = LocalDate.now();
-            LocalTime time = LocalTime.now();
+            LocalTime time = LocalTime.now().truncatedTo(java.time.temporal.ChronoUnit.SECONDS);;
                     //.format(TimeFormatted);
 
             transactions t = new transactions(date, time, description, vendor, amount);

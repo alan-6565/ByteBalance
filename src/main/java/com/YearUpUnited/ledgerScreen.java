@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 
+import static com.YearUpUnited.start.simulateLoading;
+
 public class ledgerScreen {
 
     private static final String fileName = "transactions.csv";
@@ -19,9 +21,9 @@ public class ledgerScreen {
         boolean running = true;
 
         while (running){
-            System.out.println("=====================");
-            System.out.println("     LEDGER HOME     ");
-            System.out.println("=====================");
+            System.out.println("======================");
+            System.out.println("SHIKAMARUS LEDGER HOME     ");
+            System.out.println("======================");
             System.out.println("A) All Entries");
             System.out.println("D) All Deposits");
             System.out.println("P) All Payments");
@@ -32,18 +34,27 @@ public class ledgerScreen {
 
             switch (choice) {
                 case "A":
+                    simulateLoading("Searching For All Entries");
                     displayAll(transaction);
                     break;
                 case "D":
+                    simulateLoading("Catching All Deposits");
                     displayAllDeposits(transaction);
                     break;
                 case "P":
+                    simulateLoading("Catching All Payments");
                     displayAllPayments(transaction);
                     break;
                 case "R":
-                    Reports.showReportsMenu(sc);
+                    simulateLoading("Heading To Reports");
+                    boolean goHome = Reports.showReportsMenu(sc);
+                    if (goHome) {
+
+                        running = false;
+                    }
                     break;
                 case "X":
+                    simulateLoading("Falling Back Home");
                     System.out.println("Back To Home");
                     running = false;
 

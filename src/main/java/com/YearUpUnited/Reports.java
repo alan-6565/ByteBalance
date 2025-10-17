@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.YearUpUnited.start.simulateLoading;
+
 public class Reports {
 
     private static final String fileName = "transactions.csv";
     private static final List<transactions> transaction = reader();
 
-    public static void showReportsMenu(Scanner sc) {
+    public static boolean showReportsMenu(Scanner sc) {
         boolean running = true;
+        boolean goHome = false;
 
         while (running) {
             System.out.println("=====================");
@@ -32,29 +35,36 @@ public class Reports {
 
             switch (choice) {
                 case "1":
+                    simulateLoading("Looking For This Months Data");
                     displayMonthToDate(transaction);
                     break;
                 case "2":
+                    simulateLoading("Searching Last Months Data");
                     displayPreviousMonth(transaction);
                     break;
                 case "3":
+                    simulateLoading("Looking At This Years Data");
                     displayYearToDate(transaction);
                     break;
                 case "4":
+                    simulateLoading("Searching Last Years Data");
                     displayPreviousYear(transaction);
                     break;
                 case "5":
                     SearchForVendor(sc, transaction);
                     break;
                 case "0":
+                    simulateLoading("Going Back");
                     running = false;
                     break;
                 case "H":
                     System.out.println("Back To Home");
-                    homeScreen.showHomeScreen();
+                    goHome = true;
+                    running = false;
                     break;
             }
         }
+        return goHome;
     }
 
     private static List<transactions> reader() {
@@ -102,13 +112,13 @@ public class Reports {
     }
 
     private static void displayPreviousMonth(List<transactions> list) {
-        java.time.LocalDate today = java.time.LocalDate.now();
-        java.time.LocalDate prev = today.minusMonths(1);
+        LocalDate today = LocalDate.now();
+        LocalDate prev = today.minusMonths(1);
         int yr = prev.getYear();
         int mo = prev.getMonthValue();
 
         for (int i = list.size() - 1; i >= 0; i--) {
-            java.time.LocalDate d = list.get(i).getDate();
+            LocalDate d = list.get(i).getDate();
             if (d.getYear() == yr && d.getMonthValue() == mo) {
                 System.out.println(list.get(i).toString());
             }
@@ -116,7 +126,7 @@ public class Reports {
     }
 
     private static void displayYearToDate(List<transactions> list) {
-        int yr = java.time.LocalDate.now().getYear();
+        int yr = LocalDate.now().getYear();
 
         for (int i = list.size() - 1; i >= 0; i--) {
             if (list.get(i).getDate().getYear() == yr) {
@@ -126,12 +136,12 @@ public class Reports {
     }
 
     private static void displayPreviousYear(List<transactions> list){
-        java.time.LocalDate today = java.time.LocalDate.now();
-        java.time.LocalDate prev = today.minusYears(1);
+        LocalDate today = LocalDate.now();
+        LocalDate prev = today.minusYears(1);
         int yr = prev.getYear();
 
         for (int i = list.size() - 1; i >= 0; i--) {
-            java.time.LocalDate d = list.get(i).getDate();
+            LocalDate d = list.get(i).getDate();
             if (d.getYear() == yr) {
                 System.out.println(list.get(i).toString());
             }
@@ -140,10 +150,10 @@ public class Reports {
 
     private static void SearchForVendor(Scanner sc,List<transactions> list){
         System.out.println("Type In Vendor: ");
-        String input = sc.nextLine().trim().toLowerCase();
+        String input = sc.nextLine().trim();
 
         for (int i = list.size() - 1; i >= 0; i--) {
-            if (list.get(i).getVendor().toLowerCase().contains(input)) {
+            if (list.get(i).getVendor().contains(input)) {
                 System.out.println(list.get(i).toString());
             }
         }
